@@ -2,25 +2,24 @@
   <vs-row
     vs-align="center"
     vs-type="flex" vs-justify="space-around" vs-w="12">
-    <vs-col vs-type="flex" vs-w="12" vs-justify="center">{{count}}</vs-col>
+    <vs-col vs-type="flex" vs-w="12" vs-justify="center">{{ count }}</vs-col>
     <vs-col vs-w="12" vs-type="flex" vs-justify="center">
-      <vs-button @click="increment">Up</vs-button>
+      <vs-button @click="INCREMENT">Up</vs-button>
     </vs-col>
   </vs-row>
 </template>
 
 <script>
+import {INCREMENT} from "./store/mutation-types";
+import {mapMutations, mapState} from 'vuex';
+
 export default {
   name: 'app',
-  data () {
-    return {
-      count: 0
-    }
+  computed: {
+    ...mapState(['count'])
   },
-  methods : {
-    increment(){
-      this.count++;
-    }
+  methods: {
+    ...mapMutations([INCREMENT])
   }
 }
 </script>
